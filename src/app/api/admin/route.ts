@@ -31,7 +31,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json({
       success: true,
-      admin: { id: admin.admin.id, email: admin.email },
+      admin: { id: admin.id, email: admin.email },
     })
   } catch (error) {
     console.error("Error creating admin:", error)
