@@ -50,12 +50,23 @@ export default function HomePage() {
           fetch("/api/settings"),
           fetch("/api/photos?featured=true"),
         ])
+        
+        if (!settingsRes.ok) {
+          throw new Error(`Settings API error: ${settingsRes.status}`)
+        }
+        
+        if (!photosRes.ok) {
+          throw new Error(`Photos API error: ${photosRes.status}`)
+        }
+        
         const settingsData = await settingsRes.json()
         const photosData = await photosRes.json()
+        
         setSettings(settingsData)
-        setPhotos(photosData)
+        setPhotos(Array.isArray(photosData) ? photosData : [])
       } catch (error) {
         console.error("Error fetching data:", error)
+        setPhotos([]) // Ensure photos is always an array
       } finally {
         setLoading(false)
       }
