@@ -1,7 +1,8 @@
 import { auth } from "@/lib/auth"
 import { NextResponse } from "next/server"
+import type { NextRequest } from "next/server"
 
-export async function middleware(request: Request) {
+export async function middleware(request: NextRequest) {
   const session = await auth()
   
   // Protect admin routes
