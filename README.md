@@ -1,36 +1,133 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# xPhotoAlbum 📸
 
-## Getting Started
+A modern photography portfolio website with full admin panel, built with Next.js 14, shadcn/ui, and Prisma.
 
-First, run the development server:
+![Next.js](https://img.shields.io/badge/Next.js-14-black?style=flat-square&logo=next.js)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=flat-square&logo=typescript)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-4-38B2AC?style=flat-square&logo=tailwind-css)
+![Prisma](https://img.shields.io/badge/Prisma-5-2D3748?style=flat-square&logo=prisma)
+
+## ✨ Features
+
+### Public Features
+- 🖼️ Hero section with configurable cover image
+- 📸 Photo grid with lazy loading
+- 🏷️ Category filtering (Portrait, Landscape, Food, Street, Architecture, Travel, Animal, Night, Macro, Event, B&W, Film)
+- 🔍 Lightbox for full-size image viewing
+- 📱 Fully responsive design
+
+### Admin Panel
+- 🔐 Secure admin authentication (NextAuth.js)
+- 📊 Dashboard with statistics
+- 📷 Photo management (upload, edit, delete, feature)
+- 📁 Album management
+- ⚙️ Site settings (hero image, title, description)
+
+## 🛠️ Tech Stack
+
+- **Framework**: Next.js 14 (App Router)
+- **UI**: shadcn/ui + Tailwind CSS
+- **Database**: PostgreSQL (Vercel Postgres)
+- **ORM**: Prisma
+- **Auth**: NextAuth.js
+- **Storage**: Vercel Blob
+- **Animation**: Framer Motion
+
+## 🚀 Quick Start
+
+### Prerequisites
+
+- Node.js 18+
+- PostgreSQL database
+- Vercel Blob storage (or other S3-compatible storage)
+
+### Installation
 
 ```bash
+# Clone the repository
+git clone https://github.com/xchkoo-xclaw/xphotoalbum.git
+cd xphotoalbum
+
+# Install dependencies
+npm install
+
+# Set up environment variables
+cp .env.example .env
+
+# Initialize database
+npm run db:push
+
+# Create admin user
+npm run init:admin
+
+# Start development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit http://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📦 Environment Variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Variable | Description |
+|----------|-------------|
+| `DATABASE_URL` | PostgreSQL connection string |
+| `NEXTAUTH_SECRET` | Secret for NextAuth.js (generate with `openssl rand -base64 32`) |
+| `NEXTAUTH_URL` | Your app URL |
+| `BLOB_READ_WRITE_TOKEN` | Vercel Blob token |
+| `ADMIN_EMAIL` | Admin email for initial setup |
+| `ADMIN_PASSWORD` | Admin password for initial setup |
 
-## Learn More
+## 📁 Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+xphotoalbum/
+├── src/
+│   ├── app/
+│   │   ├── page.tsx           # Homepage
+│   │   ├── admin/             # Admin panel
+│   │   │   ├── page.tsx       # Dashboard
+│   │   │   ├── photos/        # Photo management
+│   │   │   ├── albums/        # Album management
+│   │   │   ├── settings/      # Site settings
+│   │   │   └── login/         # Login page
+│   │   └── api/               # API routes
+│   ├── components/
+│   │   └── ui/                # shadcn/ui components
+│   └── lib/
+│       ├── auth.ts            # NextAuth configuration
+│       └── db.ts              # Prisma client
+├── prisma/
+│   └── schema.prisma          # Database schema
+├── scripts/
+│   └── init-admin.ts          # Admin initialization script
+└── DEPLOYMENT.md              # Deployment guide
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🎨 Photo Categories
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| ID | Chinese | English |
+|----|---------|---------|
+| portrait | 人像 | Portrait |
+| landscape | 风景 | Landscape |
+| food | 美食 | Food |
+| street | 街拍 | Street |
+| architecture | 建筑 | Architecture |
+| travel | 旅行 | Travel |
+| animal | 动物 | Animal |
+| night | 夜景 | Night |
+| macro | 微距 | Macro |
+| event | 活动 | Event |
+| bw | 黑白 | Black & White |
+| film | 胶片 | Film |
 
-## Deploy on Vercel
+## 📖 Documentation
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- [Deployment Guide](./DEPLOYMENT.md) - Step-by-step Vercel deployment
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📄 License
+
+MIT
+
+---
+
+Made with ❤️ by Xclaw 🦉
